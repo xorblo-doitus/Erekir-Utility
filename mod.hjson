@@ -1,23 +1,29 @@
+{
 #the mod name as displayed in-game
-displayName: "Java Mod Template"
+displayName: "Erekir Utility"
 
 #the internal name of your mod
-name: "example-java-mod"
+name: "erekir-utility"
 
 #your name
-author: "You"
+author: "xorblo-doitus"
 
 #the fully qualified main class of the mod
-main: "example.ExampleJavaMod"
+main: "erekirutility.ErekirUtility"
 
 #the mod description as seen in the mod dialog
-description: "A Mindustry Java mod template."
+description:
+    "(Indev)
+    
+    Add various utility features :
+    - Non-CoreBurning duct"
 
 #the mod version
-version: 1.0
+version: 0.1
 
 #the minimum game build required to run this mod
 minGameVersion: 140
 
 #this is a java mod
 java: true
+}
