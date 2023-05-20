@@ -4,9 +4,7 @@ package erekirutility.content;
 import erekirutility.world.blocks.distribution.NonCoreBurningDuct;
 import mindustry.content.Items;
 import mindustry.type.*;
-// import mindustry.*;
 import mindustry.world.*;
-// import mindustry.world.blocks.distribution.*;
 
 public class ErekirUtilityBlocks {
     public static Block nonCoreBurningDuct;

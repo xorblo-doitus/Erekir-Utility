@@ -1,9 +1,6 @@
 package erekirutility.world.blocks.distribution;
 
-// import arc.Events;
-// import arc.func.Cons;
 import arc.util.*;
-// import mindustry.game.EventType.*;
 import mindustry.gen.Building;
 import mindustry.type.Item;
 import mindustry.world.blocks.distribution.Duct;
@@ -17,54 +14,12 @@ public class NonCoreBurningDuct extends Duct{
     
     public class NonCoreBurningDuctBuild extends DuctBuild{
         public @Nullable CoreBuild referenceCore;
-        // public Cons<CoreChangeEvent> coreChangeListener = (e) -> {referenceCore = team.core();};
-        // public @Nullable Cons<WorldLoadEndEvent> worldLoadEndListener;
-        
-        // @Override
-        // public void created(){
-        //     super.created();
-            
-        //     worldLoadEndListener = (e) -> {
-        //         referenceCore = team.core();
-        //         Log.info("referenceCore :");
-        //         Log.info(referenceCore);
-        //         Events.remove(WorldLoadEndEvent.class, worldLoadEndListener);
-        //         worldLoadEndListener = null;
-        //     };
-            
-        //     Events.on(
-        //         CoreChangeEvent.class,
-        //         coreChangeListener
-        //     );
-        //     Events.on(
-        //         WorldLoadEndEvent.class,
-        //         worldLoadEndListener
-        //     );
-        //     referenceCore = team.core();
-        // }
-        
-        // @Override
-        // public void remove(){
-        //     Events.remove(CoreChangeEvent.class, coreChangeListener);
-        //     super.remove();
-        // }
         
         public boolean coreHasSpace(Building core, Item item) {
-            // @Nullable CoreBuild nextCore = next instanceof CoreBuild d ? d : null;
-            
             return referenceCore == null || referenceCore.storageCapacity > referenceCore.items.get(item);
-            // return referenceCore == null || referenceCore.storageCapacity > referenceCore.items.get(item);
         }
         
-        // @Override
-        // public void onProximityUpdate(){
-        //     super.onProximityUpdate();
-            
-        //     if (nextc instanceof NonCoreBurningDuctBuild)
-        //     nextCore = next instanceof CoreBuild d ? d : null;
-        // }
-        
-        // Copy pasted duct's script
+        /** Modified {@Link Duct.DuctBuild#updateTile} to stop moving when core is full */
         @Override
         public void updateTile(){
             progress += edelta() / speed * 2f;

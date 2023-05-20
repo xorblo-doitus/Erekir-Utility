@@ -16,10 +16,10 @@ description:
     "(Indev)
     
     Add various utility features :
-    - Non-CoreBurning duct"
+    - Stingy Duct : Prevent core incineration"
 
 #the mod version
-version: 0.1
+version: 0.2
 
 #the minimum game build required to run this mod
 minGameVersion: 140

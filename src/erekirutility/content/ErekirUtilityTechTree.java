@@ -1,23 +1,18 @@
 package erekirutility.content;
 
 import arc.struct.*;
-// import arc.util.*;
 import mindustry.content.*;
 import mindustry.ctype.*;
 import mindustry.game.Objectives.*;
 import mindustry.type.*;
-// import mindustry.world.*;
 
 import static mindustry.content.Blocks.*;
-// import static mindustry.content.Items.*;
-import static mindustry.content.TechTree.*;
-// import static mindustry.content.UnitTypes.*;
 import static erekirutility.content.ErekirUtilityBlocks.*;
 
 
-public class ErekirUtilityTechTree {
-    static TechTree.TechNode context = null;
-
+public class ErekirUtilityTechTree extends TechTree{
+    /** Use own context because {@link TechTree#context} is private and has no setter */
+    public static TechNode context = null;
 
     public static void load(){
         vanillaNode(ductUnloader, () -> {
@@ -31,29 +26,34 @@ public class ErekirUtilityTechTree {
         children.run();
     }
     
-    private static void node(UnlockableContent content, ItemStack[] requirements, Seq<Objective> objectives, Runnable children){
+    /** Source {@Link TechTree} because context is private and those methods are static */
+    public static TechNode node(UnlockableContent content, Runnable children){
+        return node(content, content.researchRequirements(), children);
+    }
+
+    public static TechNode node(UnlockableContent content, ItemStack[] requirements, Runnable children){
+        return node(content, requirements, null, children);
+    }
+
+    public static TechNode node(UnlockableContent content, ItemStack[] requirements, Seq<Objective> objectives, Runnable children){
         TechNode node = new TechNode(context, content, requirements);
-        if(objectives != null) node.objectives = objectives;
+        if(objectives != null){
+            node.objectives.addAll(objectives);
+        }
 
         TechNode prev = context;
         context = node;
         children.run();
         context = prev;
+
+        return node;
     }
 
-    private static void node(UnlockableContent content, ItemStack[] requirements, Runnable children){
-        node(content, requirements, null, children);
+    public static TechNode node(UnlockableContent content, Seq<Objective> objectives, Runnable children){
+        return node(content, content.researchRequirements(), objectives, children);
     }
 
-    // private static void node(UnlockableContent content, Seq<Objective> objectives, Runnable children){
-    //     node(content, content.researchRequirements(), objectives, children);
-    // }
-
-    private static void node(UnlockableContent content, Runnable children){
-        node(content, content.researchRequirements(), children);
-    }
-
-    private static void node(UnlockableContent block){
-        node(block, () -> {});
+    public static TechNode node(UnlockableContent block){
+        return node(block, () -> {});
     }
 }
