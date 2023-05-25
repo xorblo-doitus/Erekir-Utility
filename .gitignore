@@ -1,3 +1,9 @@
+###### Mod's ignores
+*.xcf
+
+
+###### From template
+
 logs/
 /core/assets/mindustry-saves/
 /core/assets/mindustry-maps/

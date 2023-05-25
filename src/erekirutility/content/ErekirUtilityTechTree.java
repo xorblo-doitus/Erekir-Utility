@@ -18,6 +18,10 @@ public class ErekirUtilityTechTree extends TechTree{
         vanillaNode(ductUnloader, () -> {
             node(nonCoreBurningDuct);
         });
+        
+        vanillaNode(beamNode, () -> {
+            node(powerSaver);
+        });
     }
     
     // Source : https://github.com/sk7725/BetaMindy/blob/95def54d901123bab9f6279ae22ea9dffc50cf41/src/betamindy/content/MindyTechTree.java#L264
