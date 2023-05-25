@@ -20,7 +20,7 @@ description:
     - Power Saver : Disconnects when battery are very low, reconnects when the backward network is recharged."
 
 #the mod version
-version: 0.2
+version: 0.3
 
 #the minimum game build required to run this mod
 minGameVersion: 140
